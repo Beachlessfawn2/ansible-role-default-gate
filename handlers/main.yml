@@ -1,7 +1,6 @@
 # roles/default-gate/handlers/main.yml
 ---
-
-- name: restart default-gate
+- name: restart network
   service:
-    name: "{{ default-gate_service }}"
+    name: network.service
     state: restarted
