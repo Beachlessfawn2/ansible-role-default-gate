@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Bert Van Vreckem
-  description: PURPOSE
+  author: Beachlessfawn2
+  description: Role for setting up a default-gateway route on virtual machines with a NAT-interface and a LAN-interface.
   license: BSD
   min_ansible_version: 2.0
   platforms:
@@ -10,4 +10,5 @@ galaxy_info:
         - 7
   galaxy_tags:
     - system
+    - configuration
 dependencies: []
