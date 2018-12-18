@@ -1,0 +1,9 @@
+# roles/default-gate/vars/RedHat.yml
+#
+# Distribution-specific variables for RHEL, CentOS, ...
+---
+
+default-gate_packages:
+  - default-gate
+
+default-gate_service: default-gated

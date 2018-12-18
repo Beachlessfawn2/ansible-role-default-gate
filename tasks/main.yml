@@ -1,0 +1,22 @@
+# roles/default-gate/tasks/main.yml
+---
+
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
+  tags: default-gate
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ default-gate_packages }}"
+  tags: default-gate
+
+- name: Ensure service is started
+  service:
+    name: "{{ default-gate_service }}"
+    state: started
+    enabled: true
+  tags: default-gate
