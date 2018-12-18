@@ -3,20 +3,25 @@
 
 - include_vars: "{{ item }}"
   with_first_found:
-    - "{{ ansible_distribution }}.yml"
-    - "{{ ansible_os_family }}.yml"
+    - "RedHat.yml"
+    - "default.yml"
   tags: default-gate
 
-- name: Install packages
-  package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ default-gate_packages }}"
+- name: Remove the NAT Default-gateway on interface
+  shell: nmcli con modify {{default-gate_NAT}} ipv4.never-default true
+  tags: default-gate
+
+- name: Configuring new Default-gateway
+  shell: nmcli con modify {{default-gate_LAN}} ipv4.never-default false
+  tags: default-gate
+
+- name: Add Default-gateway
+  shell: nmcli con modify {{default-gate_LAN}} ipv4.gateway {{default-gate_ADDR}}
   tags: default-gate
 
 - name: Ensure service is started
   service:
-    name: "{{ default-gate_service }}"
+    name: network.service
     state: started
     enabled: true
   tags: default-gate
