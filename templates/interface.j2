@@ -1,18 +1,14 @@
 BOOTPROTO={{ item['method']|lower }}
 DEVICE={{ item['name'] }}
-
 {% if item['gateway'] is defined %}
 GATEWAY={{ item['gateway'] }}
 {% endif %}
-
 {% if item['address'] is defined %}
 IPADDR={{ item['address'] }}
 {% endif %}
-
 {% if item['netmask'] is defined %}
 NETMASK={{ item['netmask'] }}
 {% endif %}
-
 TYPE=Ethernet
 DEFROUTE={{ item['defroute']|default('yes') }}
 NAME={{ item['name'] }}
