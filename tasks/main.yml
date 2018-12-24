@@ -8,15 +8,15 @@
   tags: default-gate
 
 - name: Remove the NAT Default-gateway on interface
-  shell: nmcli con modify {{default-gate_NAT}} ipv4.never-default true
+  shell: nmcli con modify {{default_gate_NAT}} ipv4.never-default true
   tags: default-gate
 
 - name: Configuring new Default-gateway
-  shell: nmcli con modify {{default-gate_LAN}} ipv4.never-default false
+  shell: nmcli con modify {{default_gate_LAN}} ipv4.never-default false
   tags: default-gate
 
 - name: Add Default-gateway
-  shell: nmcli con modify {{default-gate_LAN}} ipv4.gateway {{default-gate_ADDR}}
+  shell: nmcli con modify {{default_gate_LAN}} ipv4.gateway {{default_gate_ADDR}}
   tags: default-gate
 
 - name: Ensure service is started
