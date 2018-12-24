@@ -5,17 +5,17 @@ DEVICE={{ item['name'] }}
 {#{%   for ns in dns_nameservers %}#}
 {#DNS{{ loop.index }}={{ ns }}#}
 {#{%   endfor %}#}
-{% endif %}
+{#{% endif %}#}
 {%   if item['gateway'] is defined %}
 GATEWAY={{ item['gateway'] }}
-{%   endif %}
+{#{%   endif %}#}
 {%   if item['address'] is defined %}
 IPADDR={{ item['address'] }}
-{%   endif %}
+{#{%   endif %}#}
 {%   if item['netmask'] is defined %}
 NETMASK={{ item['netmask'] }}
-{%   endif %}
-{% endif %}
+{#{%   endif %}
+{% endif %}#}
 {#{% if config_network_bonds %}
 {%   if network_bonds is defined %}
 {%     for nb in network_bonds %}
