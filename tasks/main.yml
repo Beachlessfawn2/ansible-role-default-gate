@@ -7,17 +7,28 @@
     - "default.yml"
   tags: default-gate
 
-- name: Remove the NAT Default-gateway on interface
-  shell: nmcli con modify {{default_gate_NAT}} ipv4.never-default true
-  tags: default-gate
+#- name: Remove the NAT Default-gateway on interface
+#  shell: nmcli con modify {{default_gate_NAT}} ipv4.never-default true
+#  tags: default-gate
+#
+#- name: Configuring new Default-gateway
+#  shell: nmcli con modify {{default_gate_LAN}} ipv4.never-default false
+#  tags: default-gate
+#
+#- name: Add Default-gateway
+#  shell: nmcli con modify {{default_gate_LAN}} ipv4.gateway {{default_gate_ADDR}}
+#  tags: default-gate
 
-- name: Configuring new Default-gateway
-  shell: nmcli con modify {{default_gate_LAN}} ipv4.never-default false
-  tags: default-gate
-
-- name: Add Default-gateway
-  shell: nmcli con modify {{default_gate_LAN}} ipv4.gateway {{default_gate_ADDR}}
-  tags: default-gate
+- name: Configuring Interfaces
+  template:
+    src: "interface.j2"
+    dest: "/etc/sysconfig/network-scripts/ifcfg-{{ item['name'] }}"
+  register: "config_interface"
+  become: true
+  with_items: '{{ network_interfaces }}'
+  when: >
+        config_network_interfaces and
+        item['configure']
 
 - name: Ensure service is started
   service:
