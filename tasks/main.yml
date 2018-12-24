@@ -30,6 +30,16 @@
         config_network_interfaces and
         item['configure']
 
+- name: Restarting Network Interfaces
+  shell: bash -c "ifdown {{ item['item']['name'] }} && ifup {{ item['item']['name'] }}"
+  become: true
+  with_items: "{{ config_interface['results'] }}"
+  when: >
+        config_network_interfaces and
+        enable_configured_interfaces_after_defining and
+        item['item']['configure'] and
+        item['changed']
+
 - name: Ensure service is started
   service:
     name: network.service
