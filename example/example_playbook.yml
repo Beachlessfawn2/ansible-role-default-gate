@@ -1,0 +1,21 @@
+---
+# Defines if interfaces should be configured as defined
+config_network_interfaces: true
+# Defines if interfaces should be brought up after defining. This can be overridden
+# with the `enable` option per interface. Please see the examples below.
+enable_configured_interfaces_after_defining:  true
+
+network_interfaces:
+  - name: 'eth0'
+    configure: true
+    enable: true
+    method: 'dhcp'
+    defroute: 'no'
+  - name: 'eth1'
+    configure: true
+    enable: true
+    method: 'none'
+    address: '192.0.2.50'
+    netmask: '255.255.255.0'
+    defroute: 'yes'
+    gateway: '192.0.2.254'
