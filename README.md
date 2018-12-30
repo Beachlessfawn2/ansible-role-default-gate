@@ -1,19 +1,41 @@
 # Ansible role `default-gate`
 
-An Ansible role for PURPOSE. Specifically, the responsibilities of this role are to:
+An Ansible role for setting specific interface settings for linux systems. Specifically, the responsibilities of this role are to:
 
--
+- Set interface protocol
+- Set ip address
+- Set netmask
+- Set default gateway
+- Define ipv6 settings
+- etc.
 
 ## Requirements
 
-No specific requirements
+Only works on RedHat like systems, no package or tools needed.
 
 ## Role Variables
 
+This role is designed so it would be easy to debug any problems. Main purpose is to automaticaly set default gateway/router in an Ansible enviroment. This role has some global options that are mandatroy for the role to apply the configured settings. For an example see the [example playbook](/example/example_playbook.yml).
 
 | Variable   | Default | Comments (type)  |
 | :---       | :---    | :---             |
-| `role_var` | -       | (scalar) PURPOSE |
+| `config_network_interfaces` | false | Defines if the interface must be configured. |
+| `enable_configured_interfaces_after_defining` | false | Defines if configs should be enabled. |
+| `interfaces[]` | - | List with options for configuring interface. |
+
+With this role you can precisly control wich options you want for what interface, completely automaticaly. For an example see the [example playbook](/example/example_playbook.yml).
+
+| Variable   | Default | Comments (type)  |
+| :---       | :---    | :---             |
+| `name` | - | Name of the interface (eth1). |
+| `configure` | - | Boolean that defines if the interface should be configured with these settings. |
+| `enable` | - | Boolean that defines if the interface should be active after configuration. |
+| `method` | - | Defines option BOOTPROTO. |
+| `defroute` | yes | Boolean that defines if this interface should have a default route. |
+| `address` | - | IP-address for the interface. |
+| `netmask` | - | Netmask fot the interface IP-address. |
+| `gateway` | - | IP-address that should be set as default gateway. |
+| `onboot` | yes | Defines if interface settings should be loaded when booted. |
 
 ## Dependencies
 
@@ -21,14 +43,7 @@ No dependencies.
 
 ## Example Playbook
 
-See the test playbooks in either the [Vagrant](https://github.com/bertvv/ansible-role-default-gate/blob/vagrant-tests/test.yml) or [Docker](https://github.com/bertvv/ansible-role-default-gate/blob/docker-tests/test.yml) test environment. See the section Testing for details.
-
-## Testing
-
-There are two types of test environments available. One powered by Vagrant, another by Docker. The latter is suitable for running automated tests on Travis-CI. Test code is kept in separate orphan branches. For details of how to set up these test environments on your own machine, see the README files in the respective branches:
-
-- Vagrant: [vagrant-tests](https://github.com/bertvv/ansible-role-default-gate/tree/vagrant-tests)
-- Docker: [docker-tests](https://github.com/bertvv/ansible-role-default-gate/tree/docker-tests)
+See the test playbook in [example](/example/).
 
 ## Contributing
 
@@ -42,5 +57,5 @@ Pull requests are also very welcome. The best way to submit a PR is by first cre
 
 ## Contributors
 
-- [Bert Van Vreckem](https://github.com/bertvv/) (maintainer)
-
+- [Bert Van Vreckem](https://github.com/bertvv/) (maintainer skeleton)
+- [Beachlessfawn2](https://github.com/Beachlessfawn2) (maintainer role)
