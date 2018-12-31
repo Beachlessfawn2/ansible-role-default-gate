@@ -15,7 +15,7 @@ Only works on RedHat like systems, no package or tools needed.
 
 ## Role Variables
 
-This role is designed so it would be easy to debug any problems. Main purpose is to automaticaly set default gateway/router in an Ansible enviroment. This role has some global options that are mandatroy for the role to apply the configured settings. For an example see the [example playbook](/example/example_playbook.yml).
+This role is designed so it would be easy to debug any problems. Main purpose is to automaticaly set default gateway/router in an Ansible enviroment. This role has some global options that are mandatroy for the role to apply the configured settings. For an example see the [example playbook](/example/example_playbook.yml). For more information about the possible options to use with the tags, visit the [RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s1-networkscripts-interfaces) customer portal.
 
 | Variable   | Default | Comments (type)  |
 | :---       | :---    | :---             |
