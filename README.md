@@ -36,6 +36,7 @@ With this role you can precisely control wich options you want for what interfac
 | `netmask` | - | Netmask fot the interface IP-address. |
 | `gateway` | - | IP-address that should be set as default gateway. |
 | `onboot` | yes | Defines if interface settings should be loaded when booted. |
+| `ipv4_fail` | no | Defines if configuration fails if there is no ipv4 address. |
 
 ## Dependencies
 
