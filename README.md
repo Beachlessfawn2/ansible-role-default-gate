@@ -6,8 +6,6 @@ An Ansible role for configuring specific interface settings for linux systems. S
 - Set ip address
 - Set netmask
 - Set default gateway
-- Define ipv6 settings
-- etc.
 
 ## Requirements
 
@@ -15,7 +13,7 @@ Only works on RedHat like systems, no package or tools needed.
 
 ## Role Variables
 
-This role is designed so it would be easy to debug any problems. Main purpose is to automatically set default gateway/router in an Ansible enviroment. This role has some global options that are mandatory for the role to apply the configured settings. For an example see the [example playbook](/example/example_playbook.yml). For more information about the possible options to use with the tags, visit the [RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s1-networkscripts-interfaces) customer portal.
+This role is designed so it would be easy to debug any problems. Main purpose is to automatically set default gateway/router in an Ansible enviroment. This role has some global options that are mandatory for the role to apply the configured settings. For an example see the [example playbook](/example/example_playbook.yml).
 
 | Variable   | Default | Comments (type)  |
 | :---       | :---    | :---             |
@@ -23,7 +21,7 @@ This role is designed so it would be easy to debug any problems. Main purpose is
 | `enable_configured_interfaces_after_defining` | false | Defines if configs should be enabled. |
 | `interfaces[]` | - | List with options for configuring interface. |
 
-With this role you can precisely control wich options you want for what interface, completely automatically. For an example see the [example playbook](/example/example_playbook.yml). For more information about the possible options to use with the tags, visit the [RedHat](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s1-networkscripts-interfaces) customer portal.
+With this role you can precisely control wich options you want for what interface, completely automatically. For an example see the [example playbook](/example/example_playbook.yml).
 
 | Variable   | Default | Comments (type)  |
 | :---       | :---    | :---             |
