@@ -1,5 +1,14 @@
+#--------------------------------
+#Network interface cofiguration
+#Ansible Managed
+#--------------------------------
+TYPE=Ethernet
 BOOTPROTO={{ item['method']|lower }}
+DEFROUTE={{ item['defroute']|default('yes') }}
+IPV4_FAILURE_FATAL={{ item['ipv4_fail']|default('no')}}
+NAME={{ item['name'] }}
 DEVICE={{ item['name'] }}
+ONBOOT={{ item['onboot']|default('yes') }}
 {% if item['gateway'] is defined %}
 GATEWAY={{ item['gateway'] }}
 {% endif %}
@@ -9,8 +18,4 @@ IPADDR={{ item['address'] }}
 {% if item['netmask'] is defined %}
 NETMASK={{ item['netmask'] }}
 {% endif %}
-TYPE=Ethernet
-DEFROUTE={{ item['defroute']|default('yes') }}
-NAME={{ item['name'] }}
-ONBOOT={{ item['onboot']|default('yes') }}
-PEERDNS=yes
+PEERDNS={{ item['peerdns']|default('yes') }}
