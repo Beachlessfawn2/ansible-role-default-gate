@@ -1,4 +1,4 @@
 # roles/default-gate/defaults/main.yml
 ---
-
-
+config_network_interfaces: false
+enable_configured_interfaces_after_defining: false
